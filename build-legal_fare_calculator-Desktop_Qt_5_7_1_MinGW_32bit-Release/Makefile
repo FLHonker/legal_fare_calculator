@@ -186,6 +186,7 @@ Makefile: ../legal_fare_calculator/legal_fare_calculator.pro ../../../Developer/
 		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/mkspecs/features/win32/qt_config.prf \
 		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/mkspecs/win32-g++/qmake.conf \
 		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/mkspecs/features/exclusive_builds.prf \
 		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/mkspecs/features/toolchain.prf \
 		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/mkspecs/features/default_pre.prf \
@@ -340,6 +341,7 @@ Makefile: ../legal_fare_calculator/legal_fare_calculator.pro ../../../Developer/
 ../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/mkspecs/features/win32/qt_config.prf:
 ../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/mkspecs/win32-g++/qmake.conf:
 ../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/mkspecs/features/exclusive_builds.prf:
 ../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/mkspecs/features/toolchain.prf:
 ../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/mkspecs/features/default_pre.prf:

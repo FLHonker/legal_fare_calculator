@@ -36,3 +36,7 @@ MOBILITY =
 RESOURCES += \
     images.qrc
 
+DISTFILES += \
+    ico.rc
+
+RC_FILE += ico.rc
