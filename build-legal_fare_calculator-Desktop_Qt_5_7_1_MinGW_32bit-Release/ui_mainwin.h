@@ -22,6 +22,7 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QRadioButton>
+#include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -44,16 +45,19 @@ public:
     QLineEdit *lineEdit_fare;
     QLabel *label_5;
     QGroupBox *groupBox;
+    QLabel *label_6;
+    QLabel *label_money;
     QMenuBar *menuBar;
     QMenu *menu_F;
     QMenu *menu_H;
+    QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MainWin)
     {
         if (MainWin->objectName().isEmpty())
             MainWin->setObjectName(QStringLiteral("MainWin"));
-        MainWin->resize(404, 223);
-        MainWin->setMaximumSize(QSize(404, 223));
+        MainWin->resize(404, 242);
+        MainWin->setMaximumSize(QSize(404, 400));
         QIcon icon;
         icon.addFile(QStringLiteral(":/icon/icon/Calculator_1001px.png"), QSize(), QIcon::Normal, QIcon::Off);
         MainWin->setWindowIcon(icon);
@@ -100,22 +104,22 @@ public:
         doubleSpinBox_money->setMaximum(1e+10);
         label_3 = new QLabel(centralWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(60, 80, 71, 21));
+        label_3->setGeometry(QRect(60, 120, 71, 21));
         label_3->setFont(font);
         rBtn_upLimit = new QRadioButton(centralWidget);
         rBtn_upLimit->setObjectName(QStringLiteral("rBtn_upLimit"));
-        rBtn_upLimit->setGeometry(QRect(140, 80, 51, 21));
+        rBtn_upLimit->setGeometry(QRect(140, 120, 51, 21));
         rBtn_upLimit->setChecked(true);
         rBtn_downLimit = new QRadioButton(centralWidget);
         rBtn_downLimit->setObjectName(QStringLiteral("rBtn_downLimit"));
-        rBtn_downLimit->setGeometry(QRect(200, 80, 51, 21));
+        rBtn_downLimit->setGeometry(QRect(200, 120, 51, 21));
         label_4 = new QLabel(centralWidget);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(50, 130, 54, 21));
+        label_4->setGeometry(QRect(50, 170, 54, 21));
         label_4->setFont(font);
         lineEdit_fare = new QLineEdit(centralWidget);
         lineEdit_fare->setObjectName(QStringLiteral("lineEdit_fare"));
-        lineEdit_fare->setGeometry(QRect(110, 130, 151, 21));
+        lineEdit_fare->setGeometry(QRect(110, 170, 151, 21));
         QFont font2;
         font2.setFamily(QStringLiteral("SansSerif"));
         font2.setPointSize(11);
@@ -123,11 +127,22 @@ public:
         lineEdit_fare->setReadOnly(true);
         label_5 = new QLabel(centralWidget);
         label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setGeometry(QRect(270, 130, 21, 21));
+        label_5->setGeometry(QRect(270, 170, 21, 21));
         label_5->setFont(font1);
         groupBox = new QGroupBox(centralWidget);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(50, 60, 221, 51));
+        groupBox->setGeometry(QRect(50, 100, 221, 51));
+        label_6 = new QLabel(centralWidget);
+        label_6->setObjectName(QStringLiteral("label_6"));
+        label_6->setGeometry(QRect(50, 65, 71, 21));
+        label_6->setFont(font);
+        label_money = new QLabel(centralWidget);
+        label_money->setObjectName(QStringLiteral("label_money"));
+        label_money->setGeometry(QRect(130, 65, 251, 21));
+        QFont font3;
+        font3.setFamily(QString::fromUtf8("\345\256\213\344\275\223"));
+        font3.setPointSize(10);
+        label_money->setFont(font3);
         MainWin->setCentralWidget(centralWidget);
         groupBox->raise();
         label->raise();
@@ -139,6 +154,8 @@ public:
         label_4->raise();
         lineEdit_fare->raise();
         label_5->raise();
+        label_6->raise();
+        label_money->raise();
         menuBar = new QMenuBar(MainWin);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 404, 22));
@@ -147,6 +164,9 @@ public:
         menu_H = new QMenu(menuBar);
         menu_H->setObjectName(QStringLiteral("menu_H"));
         MainWin->setMenuBar(menuBar);
+        statusBar = new QStatusBar(MainWin);
+        statusBar->setObjectName(QStringLiteral("statusBar"));
+        MainWin->setStatusBar(statusBar);
 
         menuBar->addAction(menu_F->menuAction());
         menuBar->addAction(menu_H->menuAction());
@@ -180,6 +200,8 @@ public:
         label_4->setText(QApplication::translate("MainWin", "\345\276\213\345\270\210\350\264\271\357\274\232", Q_NULLPTR));
         label_5->setText(QApplication::translate("MainWin", "\345\205\203", Q_NULLPTR));
         groupBox->setTitle(QApplication::translate("MainWin", "\350\256\276\347\275\256", Q_NULLPTR));
+        label_6->setText(QApplication::translate("MainWin", "\345\244\247\345\206\231\351\207\221\351\242\235\357\274\232", Q_NULLPTR));
+        label_money->setText(QString());
         menu_F->setTitle(QApplication::translate("MainWin", "\346\226\207\344\273\266(&F)", Q_NULLPTR));
         menu_H->setTitle(QApplication::translate("MainWin", "\345\270\256\345\212\251(&H)", Q_NULLPTR));
     } // retranslateUi

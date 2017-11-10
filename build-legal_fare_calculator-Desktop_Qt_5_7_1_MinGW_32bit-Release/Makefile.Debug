@@ -462,55 +462,7 @@ debug/mainwin.o: ../legal_fare_calculator/mainwin.cpp ../legal_fare_calculator/m
 		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qdialog.h \
 		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/QButtonGroup \
 		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		ui_mainwin.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtCore/QVariant \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/QAction \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qaction.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qactiongroup.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/QApplication \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qapplication.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtCore/qcoreapplication.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtCore/qeventloop.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtGui/qguiapplication.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtGui/qinputmethod.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/QDoubleSpinBox \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qspinbox.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qabstractspinbox.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtGui/qvalidator.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtCore/qregularexpression.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/QGroupBox \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qgroupbox.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qframe.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/QHeaderView \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qheaderview.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtCore/qabstractitemmodel.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtCore/qitemselectionmodel.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qstyleoption.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qslider.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qabstractslider.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qstyle.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qtabbar.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qrubberband.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/QLabel \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qlabel.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/QLineEdit \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qlineedit.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtGui/qtextcursor.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtGui/qtextformat.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtGui/qpen.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtGui/qtextoption.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/QMenu \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qmenu.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/QMenuBar \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qmenubar.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/QRadioButton \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qradiobutton.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		../../../Developer/Qt5.7.1-Android/5.7/mingw53_32/include/QtWidgets/QWidget
+		ui_mainwin.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/mainwin.o ../legal_fare_calculator/mainwin.cpp
 
 debug/qrc_images.o: debug/qrc_images.cpp 

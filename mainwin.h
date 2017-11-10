@@ -37,6 +37,8 @@ private:
     bool isUpLimit;
     double asset;  //财产
     double fare;   //律师费
+    QString moneyQstr;
+    void ConvertMoneyCaps(long double moneySum);
     void calculate(double arg1);
 };
 
