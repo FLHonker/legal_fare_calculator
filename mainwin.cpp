@@ -159,6 +159,8 @@ void MainWin::on_actionClear_triggered()
 {
     ui->doubleSpinBox_money->clear();
     ui->lineEdit_fare->clear();
+    ui->label_money->clear();
+    ui->statusBar->clearMessage();
     ui->rBtn_upLimit->setChecked(true);
 }
 
