@@ -34,11 +34,7 @@ public:
     ~MainWin();
 
 private slots:
-    void on_doubleSpinBox_money_valueChanged(double arg1);
-
-    void on_rBtn_upLimit_toggled(bool checked);
-
-    void on_rBtn_downLimit_clicked();
+    void on_doubleSpinBox_money_valueChanged(double val);
 
     void on_actionClear_triggered();
 
@@ -48,14 +44,18 @@ private slots:
 
     void on_actionAbout_B_triggered();
 
+    void on_comboBox_2_currentIndexChanged(int index);
+
+    void on_comboBox_1_currentIndexChanged(int index);
+
 private:
     Ui::MainWin *ui;
-    bool isUpLimit;
-    double asset;  //财产
-    double fare;   //律师费
+    double asset;  //资产
+    double fare;   //费用
     QString moneyQstr;
     void ConvertMoneyCaps(long double moneySum);
-    void calculate(double arg1);
+    void calculate_zichan(double arg1);     // 计算资产评估服务收费函数
+    void calculate_fangdichan(double arg2); // 计算房地产价格评估服务收费函数
 };
 
 #endif // MAINWIN_H

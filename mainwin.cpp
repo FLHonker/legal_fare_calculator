@@ -23,7 +23,6 @@ MainWin::MainWin(QWidget *parent) :
     ui(new Ui::MainWin)
 {
     ui->setupUi(this);
-    isUpLimit = true;
 }
 
 MainWin::~MainWin()
@@ -31,65 +30,116 @@ MainWin::~MainWin()
     delete ui;
 }
 
-// 计算律师费函数
-void MainWin::calculate(double arg1)
+void MainWin::on_doubleSpinBox_money_valueChanged(double val)
+{
+    asset = val;
+
+    // 人民币单位选择
+    if(ui->comboBox_2->currentIndex()==1)  // 使用万元单位
+    {
+        asset *= 10000;
+        ui->yuan_1->setText("万元");
+        ui->yuan_2->setText("万元");
+    }
+    else if(ui->comboBox_2->currentIndex()==0)   // 使用元单位
+    {
+         ui->yuan_1->setText("元");
+         ui->yuan_2->setText("元");
+    }
+
+    // 计算费用
+    if(ui->comboBox_1->currentIndex()==0)  // 计算资产评估服务收费
+    {
+        calculate_zichan(asset);
+    }
+    else if(ui->comboBox_1->currentIndex()==1)
+    {
+        calculate_fangdichan(asset);
+    }
+}
+
+// 计算资产评估服务收费函数
+void MainWin::calculate_zichan(double arg1)
 {
     ui->statusBar->clearMessage();  //清除历史信息
     ConvertMoneyCaps(arg1);      //大写金额转换
-    if(arg1 <= 10000)   //1万元以下的
+    if(arg1 <= 2000)   //2000元起
     {
-        if(isUpLimit)
-            fare = 3000;
-        else
-            fare = 2500;
+        fare = 0;
     }
-    else if(arg1 > 10000 && arg1 <= 100000)
+    else if(arg1 <= 1000000)     //100万元以下的
     {
-        if(isUpLimit)
-            fare = 3000 + (arg1 - 10000) * 0.09;
-        else
-            fare = 2500 + (arg1 - 10000) * 0.06;
+        fare = arg1 * 0.007;
     }
-    else if(arg1 > 100000 && arg1 <= 500000)
+    else if(arg1 > 1000000 && arg1 <= 10000000)
     {
-        if(isUpLimit)
-            fare = 3000 + 90000 * 0.09 + (arg1 - 100000) * 0.06;
-        else
-            fare = 2500 + 90000 * 0.06 + (arg1 - 100000) * 0.05;
+        fare = 7000 + (arg1 - 1000000) * 0.004;
     }
-    else if(arg1 > 500000 && arg1 <= 1000000)
+    else if(arg1 > 10000000 && arg1 <= 50000000)
     {
-        if(isUpLimit)
-            fare = 3000 + 90000 * 0.09 + 400000 * 0.06 + (arg1 - 500000) * 0.05;
-        else
-            fare = 2500 + 90000 * 0.06 + 400000 * 0.05 + (arg1 - 500000) * 0.04;
+        fare = 7000 + 36000 + (arg1 - 10000000) * 0.0012;
     }
-    else if(arg1 > 1000000)
+    else if(arg1 > 50000000 && arg1 <= 100000000)
     {
-        if(isUpLimit)
-            fare = 3000 + 90000 * 0.09 + 400000 * 0.06 + 500000 * 0.05 + (arg1 - 1000000) * 0.04;
-        else
-            fare = 2500 + 90000 * 0.06 + 400000 * 0.05 + 500000 * 0.04 + (arg1 - 1000000) * 0.03;
-
-        if(arg1 > 5000000)  //大于500万的部分由率诗书无所和委托人协商确定
-        {
-            if(isUpLimit)
-                fare = 3000 + 90000 * 0.09 + 400000 * 0.06 + 500000 * 0.05 + 4000000 * 0.04;
-            else
-                fare = 2500 + 90000 * 0.06 + 400000 * 0.05 + 500000 * 0.04 + 4000000 * 0.03;
-
-            ui->lineEdit_fare->setText(QString::number(fare, 10, 2) + tr("+"));
-            ui->label_money->setText(moneyQstr);
-            ui->statusBar->showMessage(tr("大于500万的部分由律师事务所和委托人协商确定!"));
-            //QMessageBox::warning(this, tr("注意"), tr("大于500万的部分由率诗书无所和委托人协商确定!"));
-            return;
-        }
+        fare = 7000 + 36000 + 48000 + (arg1 - 50000000) * 0.0008;
+    }
+    else if(arg1 > 100000000 && arg1 <= 1000000000)
+    {
+        fare = 7000 + 36000 + 48000 + 40000 + (arg1 - 100000000) * 0.00015;
+    }
+    else if(arg1 > 1000000000)
+    {
+        fare = 7000 + 36000 + 48000 + 40000 + 135000 + (arg1 - 1000000000) * 0.0001;
     }
 
-    // 律师费文本框显示费用
+    if(ui->comboBox_2->currentIndex()==1)  // 使用万元单位
+        fare /= 10000;
+    // 费用文本框显示费用
     ui->lineEdit_fare->setText(QString::number(fare, 10, 2));
     ui->label_money->setText(moneyQstr);
 }
+
+// 计算房地产价格评估服务收费函数
+void MainWin::calculate_fangdichan(double arg2)
+{
+    ui->statusBar->clearMessage();  //清除历史信息
+    ConvertMoneyCaps(arg2);      //大写金额转换
+    if(arg2 <= 1000000)     //100万元以下的
+    {
+        fare = arg2 * 0.005;
+    }
+    else if(arg2 > 1000000 && arg2 <= 10000000)
+    {
+        fare = 5000 + (arg2 - 1000000) * 0.0025;
+    }
+    else if(arg2 > 10000000 && arg2 <= 20000000)
+    {
+        fare = 27500 + (arg2 - 10000000) * 0.0015;
+    }
+    else if(arg2 > 20000000 && arg2 <= 50000000)
+    {
+        fare = 42500 + (arg2 - 50000000) * 0.0008;
+    }
+    else if(arg2 > 50000000 && arg2 <= 80000000)
+    {
+        fare = 66500 + (arg2 - 80000000) * 0.0004;
+    }
+    else if(arg2 > 80000000 && arg2 <= 100000000)
+    {
+        fare = 78500 + (arg2 - 80000000) * 0.0002;
+    }
+    else if(arg2 > 100000000)
+    {
+        fare = 82500 + (arg2 - 100000000) * 0.0001;
+    }
+
+    if(ui->comboBox_2->currentIndex()==1)  // 使用万元单位
+        fare /= 10000;
+    // 费用文本框显示费用
+    ui->lineEdit_fare->setText(QString::number(fare, 10, 2));
+    ui->label_money->setText(moneyQstr);
+}
+
 
 // 将数字金额转化为汉字
 void MainWin::ConvertMoneyCaps(long double moneySum)
@@ -134,7 +184,12 @@ void MainWin::ConvertMoneyCaps(long double moneySum)
                 if(j)
                     money = money + name[j/4 + 3];
                 else
-                    money += "元";
+                {
+                    if(ui->comboBox_2->currentIndex()==0)
+                        money += "元";
+                    else
+                        money += "万元";
+                }
             }
             /**//*--------添加计数单位结束--------*/
             p++;
@@ -156,25 +211,6 @@ void MainWin::ConvertMoneyCaps(long double moneySum)
     money += "整";
     moneyQstr = money;
 }
-// 争议财产标的金额值改变，自动显示相应律师费
-void MainWin::on_doubleSpinBox_money_valueChanged(double arg1)
-{
-    asset = arg1;
-    calculate(asset);
-}
-
-// 选中"上限"
-void MainWin::on_rBtn_upLimit_toggled(bool checked)
-{
-    isUpLimit = checked;
-    calculate(asset);
-}
-
-// 选中"下限"
-void MainWin::on_rBtn_downLimit_clicked()
-{
-    calculate(asset);
-}
 
 // 清除，清理
 void MainWin::on_actionClear_triggered()
@@ -183,7 +219,6 @@ void MainWin::on_actionClear_triggered()
     ui->lineEdit_fare->clear();
     ui->label_money->setText("");
     ui->statusBar->clearMessage();
-    ui->rBtn_upLimit->setChecked(true);
 }
 
 // 退出
@@ -195,13 +230,25 @@ void MainWin::on_actionExit_triggered()
 // 帮助
 void MainWin::on_actionHelp_H_triggered()
 {
-    QString helpText("版权所有，严谨私自用于商业用途！\n按下列比例分段累加计算律师费：\n1万元及以下收费2500-3000元；\n1万（不含）—10万元（含）部分收费比例为6%-9%；\n10万-50万元（含）部分为5%-6%；\n50万-100万元（含）部分为4%-5%；\n100万—500万元（含）部分为3%-4%;\n500万以上部分由律师事务所和委托人协商确定。\n");
+    QString helpText("版权所有，严谨私自用于商业用途！\n");
     QMessageBox::about(this, tr("帮助"), helpText);
 }
 
 // 关于
 void MainWin::on_actionAbout_B_triggered()
 {
-    QString aboutText("@name：山东辰林律师事务所用，律师费计算器。\n@author：刘宇昂 （Frank Liu）\n@time：2017-11-10\n@version：V2.0\n根据卢立清 1.0.0.1版本改编。");
-    QMessageBox::about(this, tr("关于律师费计算器"), aboutText);
+    QString aboutText("@name：山东辰林律师事务所用，多功能评估服务费用计算器。\n@author：刘宇昂（Frank Liu）\n@email: frankliu624@mail.com\n@time：2019-06-26\n@version：V0.9\n");
+    QMessageBox::about(this, tr("关于多功能评估服务费用计算器"), aboutText);
+}
+
+void MainWin::on_comboBox_2_currentIndexChanged(int index)
+{
+    asset = ui->doubleSpinBox_money->value();
+    on_doubleSpinBox_money_valueChanged(asset);
+}
+
+void MainWin::on_comboBox_1_currentIndexChanged(int index)
+{
+    asset = ui->doubleSpinBox_money->value();
+    on_doubleSpinBox_money_valueChanged(asset);
 }

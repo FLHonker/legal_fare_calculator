@@ -1,9 +1,11 @@
 <RCC>
     <qresource prefix="/icon">
-        <file>icon/Calculator_1001px.png</file>
         <file>icon/about-us.png</file>
         <file>icon/clear.png</file>
         <file>icon/help.png</file>
         <file>icon/exit.png</file>
+        <file>icon/Calculator_1001px.png</file>
+        <file>icon/calculator_128px_1223220_easyicon.net.ico</file>
+        <file>icon/calculator_348px_1223220_easyicon.net.png</file>
     </qresource>
 </RCC>
