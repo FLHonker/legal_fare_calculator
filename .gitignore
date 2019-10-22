@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+*.7z
+*.zip
+*.rar
+/legal_fare_calculator_beta

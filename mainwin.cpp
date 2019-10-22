@@ -1,3 +1,20 @@
+/***************************************************************
+*Copyright (c) 2017,Wuhan
+*All rights reserved.
+*
+*文件名称: mainwin.cpp
+*文件标识: 律师费用计算器窗体主函数文件
+*
+*当前版本：V1.0
+*作者：Frank Liu 
+*完成日期：20171113
+*
+*修改记录1：   //修改历史记录，包括修改日期、版本号、修改人及修改内容等
+*修改日期        版本号              修改人         修改内容
+
+* 20171113         V1.0              Frank            创建
+******************************************************************/
+
 #include "mainwin.h"
 #include "ui_mainwin.h"
 
@@ -33,32 +50,37 @@ void MainWin::calculate(double arg1)
         else
             fare = 2500 + (arg1 - 10000) * 0.06;
     }
-    else if(arg1 > 100000 && arg1 < 500000)
+    else if(arg1 > 100000 && arg1 <= 500000)
     {
         if(isUpLimit)
-            fare = 3000 + 10000 * 0.09 + (arg1 - 100000) * 0.06;
+            fare = 3000 + 90000 * 0.09 + (arg1 - 100000) * 0.06;
         else
-            fare = 3000 + 10000 * 0.06 + (arg1 - 100000) * 0.05;
+            fare = 2500 + 90000 * 0.06 + (arg1 - 100000) * 0.05;
     }
     else if(arg1 > 500000 && arg1 <= 1000000)
     {
         if(isUpLimit)
-            fare = 3000 + 10000 * 0.09 + 400000 * 0.06 + (arg1 - 500000) * 0.05;
+            fare = 3000 + 90000 * 0.09 + 400000 * 0.06 + (arg1 - 500000) * 0.05;
         else
-            fare = 3000 + 10000 * 0.09 + 400000 * 0.05 + (arg1 - 500000) + arg1 * 0.04;
+            fare = 2500 + 90000 * 0.06 + 400000 * 0.05 + (arg1 - 500000) * 0.04;
     }
     else if(arg1 > 1000000)
     {
         if(isUpLimit)
-            fare = 3000 + 10000 * 0.09 + 400000 * 0.06 + 500000 * 0.05 + (arg1 - 1000000) * 0.04;
+            fare = 3000 + 90000 * 0.09 + 400000 * 0.06 + 500000 * 0.05 + (arg1 - 1000000) * 0.04;
         else
-            fare = 3000 + 10000 * 0.09 + 400000 * 0.06 + 500000 * 0.04 + (arg1 - 1000000) * 0.03;
+            fare = 2500 + 90000 * 0.06 + 400000 * 0.05 + 500000 * 0.04 + (arg1 - 1000000) * 0.03;
 
         if(arg1 > 5000000)  //大于500万的部分由率诗书无所和委托人协商确定
         {
+            if(isUpLimit)
+                fare = 3000 + 90000 * 0.09 + 400000 * 0.06 + 500000 * 0.05 + 4000000 * 0.04;
+            else
+                fare = 2500 + 90000 * 0.06 + 400000 * 0.05 + 500000 * 0.04 + 4000000 * 0.03;
+
             ui->lineEdit_fare->setText(QString::number(fare, 10, 2) + tr("+"));
             ui->label_money->setText(moneyQstr);
-            ui->statusBar->showMessage(tr("大于500万的部分由率诗书无所和委托人协商确定!"));
+            ui->statusBar->showMessage(tr("大于500万的部分由律师事务所和委托人协商确定!"));
             //QMessageBox::warning(this, tr("注意"), tr("大于500万的部分由率诗书无所和委托人协商确定!"));
             return;
         }
@@ -159,7 +181,7 @@ void MainWin::on_actionClear_triggered()
 {
     ui->doubleSpinBox_money->clear();
     ui->lineEdit_fare->clear();
-    ui->label_money->clear();
+    ui->label_money->setText("");
     ui->statusBar->clearMessage();
     ui->rBtn_upLimit->setChecked(true);
 }
@@ -173,7 +195,7 @@ void MainWin::on_actionExit_triggered()
 // 帮助
 void MainWin::on_actionHelp_H_triggered()
 {
-    QString helpText("版权所有，严谨私自用于商业用途！\n按下列比例分段累加计算律师费：\n1万元及以下收费2500-3000元；\n1万（不含）—10万元（含）部分收费比例为6%-9%；\n10万-50万元（含）部分为5%-6%；\n50万-100万元（含）部分为4%-5%；\n100万—500万元（含）部分为3%-4%;\n500万以上部分由律师事务所和委托人学号协商确定。\n");
+    QString helpText("版权所有，严谨私自用于商业用途！\n按下列比例分段累加计算律师费：\n1万元及以下收费2500-3000元；\n1万（不含）—10万元（含）部分收费比例为6%-9%；\n10万-50万元（含）部分为5%-6%；\n50万-100万元（含）部分为4%-5%；\n100万—500万元（含）部分为3%-4%;\n500万以上部分由律师事务所和委托人协商确定。\n");
     QMessageBox::about(this, tr("帮助"), helpText);
 }
 

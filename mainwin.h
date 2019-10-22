@@ -1,9 +1,25 @@
+/***************************************************************
+*Copyright (c) 2017,Wuhan
+*All rights reserved.
+*
+*文件名称: mainwin.h
+*文件标识: 律师费用计算器窗体主函数头文件
+*
+*当前版本：V1.0
+*作者：Frank Liu 
+*完成日期：20171113
+*
+*修改记录1：   //修改历史记录，包括修改日期、版本号、修改人及修改内容等
+*修改日期        版本号              修改人         修改内容
+
+* 20171113         V1.0              Frank            创建
+******************************************************************/
+
 #ifndef MAINWIN_H
 #define MAINWIN_H
 
 #include <QMainWindow>
 #include <QMessageBox>
-#include <QButtonGroup>
 
 namespace Ui {
 class MainWin;
